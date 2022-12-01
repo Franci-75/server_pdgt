@@ -73,6 +73,57 @@ app.get('/info/:title', (req, res) => {
 });
 
 
-    app.listen(PORT, () => {
-        console.log('Application listening on port: ' + PORT);
-    })
+// rate movie
+app.post('/request-token', (req, res) => {
+  let username = req.body.username;
+  let password = req.body.password;
+
+  axios.get(`${baseUrl}/authentication/token/new?api_key=${API_KEY}`)
+    .then(data => {
+      if(data.data.success) {
+        let request_token = data.data.request_token;
+        axios.post(`${baseUrl}/authentication/token/validate_with_login?api_key=${API_KEY}`,{
+          username: username,
+          password: password,
+          request_token: request_token,
+        })
+        .then(data => res.status(200).json(data.data))
+        .catch(error => res.status(500).json(error));
+      } else {
+        res.status(501).json(data);
+      }
+    }).catch(error => res.status(500).json(error));
+});
+
+app.post('/create-session', (req, res) => {
+  let request_token = req.body.request_token;
+  let username = req.body.username;
+  axios.post(`${baseUrl}/authentication/session/new?api_key=${API_KEY}`,{
+    request_token: request_token
+  }).then(data => {
+    if(data.data.succes) {
+      res.status(200).json(data.data);
+    } else {
+      res.status(501).json(data.data);
+    }
+  }).catch(error => res.status(500).json(error));
+});
+
+app.delete('/delete-session/:session_id', (req, res) => {
+  let session_id = req.params.session_id;
+  axios.delete(`${baseUrl}/authentication/session?api_key=${API_KEY}`, { data: { session_id: session_id } })
+  .then(data => {
+    if(data.data.success) {
+      res.status(200).json(data.data);
+    } else {
+      res.status(501).json(data.data);
+    }
+  }).catch(error => {
+    res.status(500).json(error)
+  });
+});
+
+
+app.listen(PORT, () => {
+    console.log('Application listening on port: ' + PORT);
+});
