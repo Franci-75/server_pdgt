@@ -19,6 +19,9 @@ const PORT = process.env.PORT || 8080;
 
 const baseUrl = 'https://api.themoviedb.org/3'; // Base request url
 
+app.use(express.json());                            // Support for JSON body
+app.use(bodyParser.urlencoded({ extended: true })); // Support for url-encoded body
+
 
 /* ----- API ENTRYPOINTS ----- */
 
