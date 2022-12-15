@@ -17,7 +17,7 @@ const axios = require('axios');
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-const API_KEY = 'cab28a1402fafb003690752813769144'; // API_KEY not defined
+const API_KEY = process.env.API_KEY; // API_KEY not defined
 const baseUrl = 'https://api.themoviedb.org/3'; // Base request url
 
 app.use(express.json());                            // Support for JSON body
