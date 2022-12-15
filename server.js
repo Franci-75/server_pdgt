@@ -17,7 +17,7 @@ const axios = require('axios');
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-const API_KEY = process.env.API_KEY; // API_KEY not defined
+const API_KEY = process.env.API_KEY; // API_KEY for TMDB
 const baseUrl = 'https://api.themoviedb.org/3'; // Base request url
 
 app.use(express.json());                            // Support for JSON body
@@ -32,7 +32,7 @@ app.get('/get-populars', (req, res) => {
     axios.get(`${baseUrl}/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc`)
       .then(function(data) {
         let results = data.data.results;
-        let popular_films  = {
+        let popular_films = {
           pop_1: results[0].original_title,
           pop_2: results[1].original_title,
           pop_3: results[2].original_title,
@@ -125,6 +125,27 @@ app.delete('/delete-session/:session_id', (req, res) => {
   }).catch(error => {
     res.status(500).json(error)
   });
+});
+
+app.post('/rate/:title', (req, res) => {
+  let film_title = req.params.title;
+  let score = req.body.score;
+  let session_id = req.body.session_id;
+
+
+  axios.get(`${baseUrl}/search/movie?api_key=${API_KEY}&language=it-IT&query=${film_title}`)
+  .then(data =>  {
+      let film_id = data.data.results[0].id
+      axios.post(`${baseUrl}/movie/${film_id}/rating?api_key=${API_KEY}&session_id=${session_id}`,{value: score})
+      .then(data => {
+          if(data.data.success) {
+              res.status(200).json(data.data); 
+          } else {
+              res.status(501).json(data.data); 
+          }
+      }).catch(error => { res.status(500).json(error)});
+  })
+  .catch(error => res.status(500).json(error));    
 });
 
 
