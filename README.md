@@ -50,18 +50,15 @@ Utilizzano le API di telegram
 
 <img src='img/start.jpg' ></div>
 
-## height="30" width="60" > ##
+<img src='img/info.jpg' ></div>
+
+<img src='img/login.jpg' ></div>
+
+<img src='img/logout.jpg' ></div>
+
+<img src='img/populars.jpg' ></div>
+
+<img src='img/rating.jpg' ></div>
 
 
-<div align="center"><img src='img/start.jpg'  height='550' ></div>
-
-<div align="center"><img src='img/info.jpg'  height='550' ></div>
-
-<div align="center"><img src='img/login.jpg'  height='550' ></div>
-
-<div align="center"><img src='img/logout.jpg'  height='550' ></div>
-
-<div align="center"><img src='img/populars.jpg'  height='550' ></div>
-
-<div align="center"><img src='img/rating.jpg'  height='550' ></div>
 
