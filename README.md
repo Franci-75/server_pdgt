@@ -48,6 +48,9 @@ Utilizzano le API di telegram
 
 
 
+<img src='img/start.jpg' ></div>
+
+## height="30" width="60" > ##
 
 
 <div align="center"><img src='img/start.jpg'  height='550' ></div>
