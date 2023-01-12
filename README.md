@@ -29,42 +29,26 @@ L'API effettua richieste HTTP di tipo GET, POST e DELETE, che sfruttando le API 
 Open data dal sito https://www.themoviedb.org/
 I dati sono forniti in formato JSON.
 
-Per raggiungere l'obiettivo **1** si effettuano 2 richieste HTTP di tipo GET:
--la prima per ottenere L'"id" del film (necessario per la seconda richiesta)
--La seconda per ottenere le effettive informazioni
+Per raggiungere l'obiettivo **1**: si effettuano 2 richieste HTTP di tipo GET:
++ la prima per ottenere L'"id" del film (necessario per la seconda richiesta)
+    https://api.themoviedb.org/3/search/movie?api_key={API_KEY}&language=it-IT&query={film_title}
+
++ la seconda per ottenere le effettive informazioni
+    https://api.themoviedb.org/3/movie/{id}?api_key={API_KEY}&language=it-IT
 
 
-'https://api.themoviedb.org/3/search/movie?api_key={API_KEY}&language=it-IT&query={film_title}'
-
-https://api.themoviedb.org/3/movie/{id}?api_key={API_KEY}&language=it-IT
-
-
-
-
- richiedendo solo il titolo del film, si effettua una richiesta per ottenere il MovieID 
-
-Per ottenere le informazioni riguardanti il film è necessario prima ottenere l' "id" del film.
-Per ottenere l' "id" del film dato il titolo del film viene effettuata una richiesta 
-
-
-
-Per raggiungere l'obiettivo **2** si effettua una semplice richiesta HTTP di tipo GET fornendo come unico parametro obbligatorio l'API_KEY.
-
-'https://api.themoviedb.org/3/discover/movie?api_key={API_KEY}&sort_by=popularity.desc'
-
-
-
+Per raggiungere l'obiettivo **2**: si effettua una semplice richiesta HTTP di tipo GET fornendo come unico parametro obbligatorio l'API_KEY.
+    https://api.themoviedb.org/3/discover/movie?api_key={API_KEY}&sort_by=popularity.desc
 
 
 Per adempiere l'obiettivo **3** è necessario possedere ed accedere ad un account di TheMovieDB.
-
-Per raggiungere l'obiettivo 3 vengono effettuati una serie di passaggi:
-1- il client richiede al server la creazione di un nuovo token per creare una nuova sessione, passando username e password,
-2- il server riceve dal client l'username e la password. Verifica che i dati passati siano corretti( cioè che esista un effettivo account con quel username e password). Se i dati sono:
-    -non corretti: allora invio al client una risposta contenente un errore( errore: login fallito)
-    -corretti: invio al client una risposta contenente un token alfanumerico(composto da lettere e numeri)
-3- se ho ricevuto il token (quindi ho inviato uno username e una password corretta al server) il client invia nuovamente al server il token generato nel punto 2. Se ho ricevuto un token sbagliato mostro un messaggio di errore.
-4- Il server riceve il token inviato dal client, lo autentica( verifica se il token sia corretto attraverso delle sue procedure interne). Se il token è corretto allora il server crea una nuova sessione e restituisce al client un id che la identifica univocamente se il token è sbagliato allora il server invia al client un mesaggio di errore (simile a quello del passaggio 2).
+Dopodichè vengono effettuati una serie di passaggi:
+1. il client richiede al server la creazione di un nuovo token per creare una nuova sessione, passando username e password,
+2. il server riceve dal client l'username e la password. Verifica che i dati passati siano corretti( cioè che esista un effettivo account con quel username e password). Se i dati sono:
+    - non corretti: allora invio al client una risposta contenente un errore( errore: login fallito)
+    - corretti: invio al client una risposta contenente un token alfanumerico(composto da lettere e numeri)
+3. se ho ricevuto il token (quindi ho inviato uno username e una password corretta al server) il client invia nuovamente al server il token generato nel punto 2. Se ho ricevuto un token sbagliato mostro un messaggio di errore.
+4. Il server riceve il token inviato dal client, lo autentica( verifica se il token sia corretto attraverso delle sue procedure interne). Se il token è corretto allora il server crea una nuova sessione e restituisce al client un id che la identifica univocamente se il token è sbagliato allora il server invia al client un mesaggio di errore (simile a quello del passaggio 2).
 
 
 
@@ -82,7 +66,7 @@ Per la messa online del servizio è stato usato Heroku sia per l'API che per il 
 ### Esempio utilizzo del servizio web ###
 
 Dopo aver ricercato il bot telegram, chiamato "TheMovieBot", al primo avvio, otterremo un messaggio di benvenuto.
-<div align="center"><img src='img/start.jpg' ></div>
+<div align="right"><img src='img/start.jpg' ></div>
 
 Comando /info
 <div align="center"><img src='img/info.jpg' ></div>
