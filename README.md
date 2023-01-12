@@ -1,17 +1,17 @@
-## TheMovieBot ##
+# 🎬 TheMovieBot 🎬 #
 
 ## Progetto Piattaforme Digitali per la Gestione del Territorio ##
 
-## Studente:
+### Studente ###
  * [Ortolani Francesco matricola n°286732](https://github.com/Franci-75)
 
 ------------------------------------------------------------------------
 
 ### Obiettivi ###
 Il progetto **TheMovieBot**, si pone i seguenti obbiettivi:
-1. ottenere informazioni riguardanti un film
+1. ottenere informazioni riguardanti un qualsiasi film
 2. ottenere i 5 film popolari del momento
-3. permette la valutazione di film, previo accesso al servizio di Thmoviedb??????
+3. permettere la valutazione di un qualsiasi film
 
 ------------------------------------------------------------------------
 
@@ -26,6 +26,8 @@ TheMovieBot è composto da 2 parti:
 
 ### API ###
 L'API effettua richieste HTTP di tipo GET, POST e DELETE, che sfruttando le API di TheMovieDB per adampiere gli obiettivi precedentemente citati.
+Open data dal sito https://www.themoviedb.org/
+I dati sono forniti in formato JSON.
 
 Per raggiungere l'obiettivo **1** si effettuano 2 richieste HTTP di tipo GET:
 -la prima per ottenere L'"id" del film (necessario per la seconda richiesta)
@@ -54,7 +56,7 @@ Per raggiungere l'obiettivo **2** si effettua una semplice richiesta HTTP di tip
 
 
 
-Per adempiere l'obiettivo **3** è necessario accedere ad un account di TheMovieDB.
+Per adempiere l'obiettivo **3** è necessario possedere ed accedere ad un account di TheMovieDB.
 
 Per raggiungere l'obiettivo 3 vengono effettuati una serie di passaggi:
 1- il client richiede al server la creazione di un nuovo token per creare una nuova sessione, passando username e password,
@@ -75,32 +77,29 @@ Utilizzano le API di telegram
 
 Per la messa online del servizio è stato usato Heroku sia per l'API che per il bot.
 
+------------------------------------------------------------------------
 
-
-
-
-## Esempio utilizzo del servizio web ##
+### Esempio utilizzo del servizio web ###
 
 Dopo aver ricercato il bot telegram, chiamato "TheMovieBot", al primo avvio, otterremo un messaggio di benvenuto.
-<img src='img/start.jpg' ></div>
+<div align="center"><img src='img/start.jpg' ></div>
 
 Comando /info
-<img src='img/info.jpg' ></div>
+<div align="center"><img src='img/info.jpg' ></div>
 
 Comando /populars
-<img src='img/populars.jpg' ></div>
+<div align="center"><img src='img/populars.jpg' ></div>
 
 Comando /login
-<img src='img/login.jpg' ></div>
+<div align="center"><img src='img/login.jpg' ></div>
 
 Comando /rating
-<img src='img/rating.jpg' ></div>
+<div align="center"><img src='img/rating.jpg' ></div>
 
 Comando /logout
-<img src='img/logout.jpg' ></div>
+<div align="center"><img src='img/logout.jpg' ></div>
 
-
-
+------------------------------------------------------------------------
 
 ### Link ###
 
