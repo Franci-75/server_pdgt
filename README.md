@@ -68,12 +68,12 @@ Per il salvataggio delle credenziali di accesso del bot é stato utilizzato il p
 ### Esempio utilizzo del servizio web ###
 
 I comandi che il bot mette a disposizione sono i seguenti:
-- */start* </div>
-    Dopo aver ricercato il bot telegram, chiamato "TheMovieBot", al primo avvio, o quando eseguiamo il comando, otterremo un messaggio di benvenuto.
+- */start* 
+    * Dopo aver ricercato il bot telegram, chiamato "TheMovieBot", al primo avvio, o quando eseguiamo il comando, otterremo un messaggio di benvenuto.
 <div align="right"><img src='img/start.jpg' ></div>
 
 - */info {titolo film}*
-Fornisce informazioni generali riguardanti il titolo del film cercato.
+    - Fornisce informazioni generali riguardanti il titolo del film cercato.
 <div align="right"><img src='img/info.jpg' ></div>
 
 - */populars*
