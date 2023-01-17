@@ -17,7 +17,7 @@ const axios = require('axios');
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-const API_KEY = process.env.API_KEY; // API_KEY for TMDB
+const API_KEY = process.env.API_KEY;            // API_KEY for TMDB
 const baseUrl = 'https://api.themoviedb.org/3'; // Base request url
 
 app.use(express.json());                            // Support for JSON body
@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // Support for url-encoded b
 /* ----- API ENTRYPOINTS ----- */
 
 
-// get 5 most popular movies
+// Get 5 most popular movies
 app.get('/get-populars', (req, res) => {
     axios.get(`${baseUrl}/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc`)
       .then(function(data) {
@@ -44,13 +44,15 @@ app.get('/get-populars', (req, res) => {
       .catch(error => res.status(500).send(error))
 });
 
-//  get info of a movie
+// Get movie info
 app.get('/info/:title', (req, res) => {
   let film_title = req.params.title;
+  // GET /search/movie for id
   axios.get(`${baseUrl}/search/movie?api_key=${API_KEY}&language=it-IT&query=${film_title}`)
   .then(data => {
     if(data.data.total_results >= 1) {
       let id = data.data.results[0].id;
+      // GET /movie/{movie_id}
       axios.get(`${baseUrl}/movie/${id}?api_key=${API_KEY}&language=it-IT`)
         .then(data => {
             let info_film = {
@@ -77,15 +79,18 @@ app.get('/info/:title', (req, res) => {
 });
 
 
-// rate movie
+// Request token
 app.post('/request-token', (req, res) => {
   let username = req.body.username;
   let password = req.body.password;
 
+  // GET create request token
   axios.get(`${baseUrl}/authentication/token/new?api_key=${API_KEY}`)
     .then(data => {
       if(data.data.success) {
         let request_token = data.data.request_token;
+        
+        // POST create session with login
         axios.post(`${baseUrl}/authentication/token/validate_with_login?api_key=${API_KEY}`,{
           username: username,
           password: password,
@@ -99,9 +104,12 @@ app.post('/request-token', (req, res) => {
     }).catch(error => res.status(500).json(error));
 });
 
+// Create session
 app.post('/create-session', (req, res) => {
   let request_token = req.body.request_token;
   let username = req.body.username;
+
+  // POST create session
   axios.post(`${baseUrl}/authentication/session/new?api_key=${API_KEY}`,{
     request_token: request_token
   }).then(data => {
@@ -113,8 +121,11 @@ app.post('/create-session', (req, res) => {
   }).catch(error => res.status(500).json(error));
 });
 
+// Delete session
 app.delete('/delete-session/:session_id', (req, res) => {
   let session_id = req.params.session_id;
+
+  // DELETE delete session
   axios.delete(`${baseUrl}/authentication/session?api_key=${API_KEY}`, { data: { session_id: session_id } })
   .then(data => {
     if(data.data.success) {
@@ -127,15 +138,17 @@ app.delete('/delete-session/:session_id', (req, res) => {
   });
 });
 
+// Rate movie
 app.post('/rate/:title', (req, res) => {
   let film_title = req.params.title;
   let score = req.body.score;
   let session_id = req.body.session_id;
 
-
+  // GET search movie
   axios.get(`${baseUrl}/search/movie?api_key=${API_KEY}&language=it-IT&query=${film_title}`)
   .then(data =>  {
       let film_id = data.data.results[0].id
+      // POST rating movie
       axios.post(`${baseUrl}/movie/${film_id}/rating?api_key=${API_KEY}&session_id=${session_id}`,{value: score})
       .then(data => {
           if(data.data.success) {
