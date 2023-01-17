@@ -73,24 +73,23 @@ I comandi che il bot mette a disposizione sono i seguenti:
 <div align="right"><img src='img/start.jpg' ></div>
 
 - */info {titolo film}*
-    - Fornisce informazioni generali riguardanti il titolo del film cercato.
+    * Fornisce informazioni generali riguardanti il titolo del film cercato.
 <div align="right"><img src='img/info.jpg' ></div>
 
 - */populars*
-Restituisce i 5 film popolari del momento
+    * Restituisce i 5 film popolari del momento
 <div align="right"><img src='img/populars.jpg' ></div>
 
 - */login {nome utente} {password}*
-Esegue il login
+    * Esegue il login
 <div align="right"><img src='img/login.jpg' ></div>
 
 - */rating {titolo film} {voto}*
-Invia il voto di un qualsiasi film al sito di TheMovieDB. 
-In caso di voto con decimali, va espresso con la virgola e non il punto.
+    * Invia il voto di un qualsiasi film al sito di TheMovieDB. In caso di voto con decimali, va espresso con la virgola e non il punto.
 <div align="right"><img src='img/rating.jpg' ></div>
 
 - */logout* 
-Esegue il logout
+    * Esegue il logout
 <div align="right"><img src='img/logout.jpg' ></div>
 
 ------------------------------------------------------------------------
