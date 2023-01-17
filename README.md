@@ -26,16 +26,15 @@ TheMovieBot è composto da 2 parti:
 
 ### API ###
 L'API effettua richieste HTTP di tipo GET, POST e DELETE, che sfruttanno le API di TheMovieDB per adampiere gli obiettivi precedentemente citati. I dati sono forniti in formato JSON e vengono presi dal sito https://www.themoviedb.org/. 
-Per la messa online del servizio è stato usato heroku sia per L'API che per il bot telegram.
 
-Per raggiungere l'obiettivo **1**: si effettuano 2 richieste HTTP di tipo GET:
+Per raggiungere l'obiettivo **1** si effettuano 2 richieste HTTP di tipo GET:
 + la prima per ottenere l'"id" del film (necessario per la seconda richiesta)
     - https://api.themoviedb.org/3/search/movie?api_key={API_KEY}&language=it-IT&query={film_title}
 + la seconda per ottenere le effettive informazioni
     - https://api.themoviedb.org/3/movie/{id}?api_key={API_KEY}&language=it-IT
 Se le richieste sono andate a buon fine, verranno restituite, in formato JSON, le informazioni del film cercato, altrimenti viene restituito un messaggio di errore.
 
-Per raggiungere l'obiettivo **2**: si effettua una semplice richiesta HTTP di tipo GET fornendo come unico parametro obbligatorio l'API_KEY.
+Per raggiungere l'obiettivo **2** si effettua una semplice richiesta HTTP di tipo GET fornendo come unico parametro obbligatorio l'API_KEY.
 - https://api.themoviedb.org/3/discover/movie?api_key={API_KEY}&sort_by=popularity.desc
 Se la richiesta è andata a buon fine, verranno restituite, in formato JSON, i titoli dei 5 film popolari del momento, altrimenti viene restituito un messaggio di errore.
 
@@ -54,13 +53,9 @@ Vengono effettuati una serie di passaggi:
 
 ### Bot ###
 
-TheMovieBot è il client per la piattaforma. Permette in pochi semplici passi di comunicare con l'API e di eseguire tutte le operazioni.
-Il bot permette il facile interfacciamento con l'API, fornendo le informazioni direttamente sullo smartphone.
-
-Utilizzano le API di telegram
-Per il salvataggio delle credenziali di accesso del bot é stato utilizzato il pacchetto Node-localstorage
-
-
+**TheMovieBot** è il client per la piattaforma. Esso permette in pochi e semplici passi di comunicare con l'API, fornendo le operazioni descritte in precedenza direttamente sullo smartphone.
+Per lo sviluppo del bot telegram è stato utilizzato il pacchetto **node-localstorage** che permette un facile salvataggio delle credenziali di accesso al servizio di TheMovieDB. 
+Per la messa online del servizio è stato usato Heroku sia per L'API che per il bot telegram.
 
 
 ------------------------------------------------------------------------
@@ -96,8 +91,11 @@ I comandi che il bot mette a disposizione sono i seguenti:
 
 ### Link ###
 
-Bot telegram: https://t.me/movie_automate_bot
+Bot telegram:
++ https://t.me/movie_automate_bot
 
-API:          https://server-pdgt.herokuapp.com/
+API:
++ https://server-pdgt.herokuapp.com/
 
-Bot:          https://client-pdgt.herokuapp.com/
+Bot:
++ https://client-pdgt.herokuapp.com/
